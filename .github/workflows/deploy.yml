@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -35,24 +35,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build and verify production artifact
         run: npm run build
-        env:
-          BASE_PATH: /${{ github.event.repository.name }}/
-
-      - name: Verify production asset URLs
-        run: |
-          test -f dist/index.html
-          test -f dist/404.html
-          grep -q "/${{ github.event.repository.name }}/assets/" dist/index.html
-          if grep -q "/src/main.tsx" dist/index.html; then
-            echo "dist/index.html is still the Vite source HTML"
-            exit 1
-          fi
-          if grep -q "%BASE_URL%" dist/index.html; then
-            echo "Vite did not replace %BASE_URL%"
-            exit 1
-          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -67,11 +51,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-      - name: Publish built site to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          force_orphan: true
-          enable_jekyll: false
