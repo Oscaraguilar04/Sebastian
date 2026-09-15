@@ -1,0 +1,225 @@
+.property-modal {
+  padding: 0;
+  border: 0;
+  color: var(--text);
+  background: var(--bg);
+  width: min(100vw, 100%);
+  max-width: 100vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.property-modal::backdrop {
+  background: rgb(var(--navy-rgb) / 72%);
+}
+
+.property-modal__content {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  min-height: 100dvh;
+}
+
+.property-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--bg);
+  z-index: 1;
+}
+
+.property-modal__gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg-2);
+}
+
+.property-modal__image {
+  width: 100%;
+  height: min(68vh, 38rem);
+  object-fit: cover;
+}
+
+.property-modal__thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+  padding: 0.85rem var(--page-pad) 1rem;
+}
+
+.property-modal__thumb {
+  display: grid;
+  gap: 0.4rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text-2);
+  text-align: left;
+}
+
+.property-modal__thumb img {
+  width: 100%;
+  height: 4.25rem;
+  object-fit: cover;
+  opacity: 0.62;
+}
+
+.property-modal__thumb.is-active {
+  color: var(--text);
+}
+
+.property-modal__thumb.is-active img {
+  opacity: 1;
+}
+
+.property-modal__thumb span {
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.property-modal__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.75rem, 4vw, 3.5rem) var(--page-pad);
+}
+
+.property-modal__details > .label {
+  margin-bottom: 0.15rem;
+}
+
+.property-modal__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 2rem;
+  margin-top: 0.8rem;
+}
+
+.property-modal__title-row h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.property-modal__price {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-variant-numeric: lining-nums;
+}
+
+.property-modal__specs {
+  display: flex;
+  gap: clamp(1.4rem, 5vw, 4rem);
+  margin-block: 1.5rem;
+  padding-block: 1.1rem;
+  border-block: 1px solid var(--border);
+}
+
+.property-modal__specs div {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.25rem;
+}
+
+.property-modal__specs dt {
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.6rem;
+}
+
+.property-modal__specs dd {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  line-height: 1.1;
+}
+
+.property-modal__description {
+  max-width: 36rem;
+  color: var(--text-2);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.property-modal__details > .label:nth-of-type(2) {
+  margin-top: 1.6rem;
+}
+
+.property-modal__highlights {
+  margin: 0.7rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.property-modal__highlights li {
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--border);
+  color: var(--text-2);
+  font-size: var(--fs-body);
+}
+
+.property-modal__highlights li:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.property-modal__schedule {
+  margin-top: 1.65rem;
+}
+
+.property-modal__disclosure {
+  margin-top: 1.5rem;
+  font-size: 0.63rem;
+  line-height: 1.8;
+  color: var(--text-2);
+}
+
+@media (max-width: 900px) {
+  .property-modal__content {
+    grid-template-columns: 1fr;
+  }
+
+  .property-modal__image {
+    min-height: 38vh;
+    height: 38vh;
+  }
+
+  .property-modal__close {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .property-modal__title-row {
+    display: block;
+  }
+
+  .property-modal__price {
+    margin-top: 0.55rem;
+  }
+
+  .property-modal__specs {
+    justify-content: space-between;
+    gap: 0.8rem;
+  }
+
+  .property-modal__schedule {
+    width: 100%;
+  }
+}

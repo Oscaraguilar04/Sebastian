@@ -1,0 +1,115 @@
+.approach {
+  display: grid;
+  grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+  min-height: 100svh;
+  background: var(--bg);
+}
+
+.approach__media {
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.approach__media > div,
+.approach__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.approach__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(var(--nav-height) + 1.5rem) var(--page-pad) 3rem;
+}
+
+.approach__copy h2 {
+  margin: 0.7rem 0 1rem;
+  font-size: clamp(2.35rem, 4.2vw, 4.1rem);
+  line-height: 0.96;
+  letter-spacing: -0.036em;
+  text-transform: uppercase;
+}
+
+.approach__lede {
+  max-width: 32rem;
+  margin-bottom: 2rem;
+  color: var(--text-2);
+  font-size: var(--fs-body);
+}
+
+.approach__list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+
+.approach__principle {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 1rem;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 1.25rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  background: none;
+  color: var(--text-2);
+  text-align: left;
+}
+
+.approach__principle.is-active {
+  color: var(--text);
+}
+
+.approach__principle span:first-child {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--clay);
+}
+
+.approach__principle strong {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.approach__principle.is-active strong {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.38em;
+}
+
+.approach__principle em {
+  display: block;
+  margin-top: 0.55rem;
+  max-width: 28rem;
+  font-style: normal;
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--text-2);
+}
+
+@media (max-width: 900px) {
+  .approach {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .approach__media {
+    order: -1;
+    min-height: 0;
+    height: min(64vw, 24rem);
+  }
+
+  .approach__copy {
+    padding: 2.75rem var(--page-pad) 3.25rem;
+  }
+}
