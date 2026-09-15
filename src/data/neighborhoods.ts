@@ -77,10 +77,10 @@ export const neighborhoods: Neighborhood[] = [
     discuss:
       "He would map your days first—work, family, and the feeling you want when you turn toward home—then decide which streets deserve a closer look.",
     media: {
-      kind: "sebastian",
-      name: "clients",
-      alt: "Sebastian Alvarez speaking with clients about where they want to live",
-      objectPosition: "62% 28%",
+      kind: "property",
+      name: "Northwest",
+      alt: "Two-story home with a three-car garage and illuminated windows at sunset",
+      objectPosition: "center 50%",
     },
   },
 ];

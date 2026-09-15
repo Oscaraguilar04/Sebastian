@@ -122,7 +122,10 @@
   }
 
   .hero__image {
-    object-position: 50% 16% !important;
+    /* Keep the hairline about 25px below the fixed nav without resizing the portrait.
+       Its source position is roughly 9% down the height-limited mobile image. */
+    object-position: 50%
+      calc(var(--nav-height) + 26px - min(5.625vh, 45px)) !important;
   }
 
   .hero__copy {
