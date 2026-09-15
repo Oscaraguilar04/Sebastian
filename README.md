@@ -40,14 +40,15 @@ Deploy the contents of `dist/` to any static host. Typical settings for Vercel, 
 
 ### GitHub Pages
 
-The site is configured as a project site at `/sebastian-alvarez/`, matching the npm package and intended repository name. Images, fonts, and other public assets use `import.meta.env.BASE_URL` or `%BASE_URL%` so they resolve under that subdirectory. Section hashes (`#about`, `#contact`) stay on the same page, and the build also writes `404.html` and `.nojekyll` so unknown paths and Jekyll-sensitive files still work on Pages.
+This project deploys from the repository **Oscaraguilar04/Sebastian**, so Vite `base` is `/Sebastian/` (not `/`). Public images and fonts are prefixed with that path. There is no React Router; the site is one page with section hashes. The build writes `404.html` (a copy of `index.html`) and `.nojekyll`.
 
-1. Create a GitHub repository named `sebastian-alvarez` (or set `BASE_PATH` in the workflow if the repo name differs).
-2. Push this project to the `main` branch.
-3. In the repository, open **Settings → Pages** and set **Source** to **GitHub Actions**.
-4. The workflow in `.github/workflows/deploy.yml` builds with Node.js 22 and publishes `dist/`.
+1. Push to `main`.
+2. In the repository, open **Settings → Pages**.
+3. Set **Source** to **GitHub Actions**.
+   If that is unavailable, set **Source** to **Deploy from a branch**, **Branch** `gh-pages`, **Folder** `/ (root)`.
+4. Do not use **Deploy from a branch** + `main` + `/ (root)`. That publishes the Vite source HTML, which loads `/src/main.tsx` and shows a blank page.
 
-If the repository is named something other than `sebastian-alvarez`, the workflow sets `BASE_PATH` from the GitHub repository name. User or organization sites named `*.github.io` publish from `/`.
+The workflow in `.github/workflows/deploy.yml` builds with Node.js 22, verifies hashed `/Sebastian/assets/` URLs, publishes `dist/` through Actions, and also writes the `gh-pages` branch.
 
 Preview the production subdirectory locally after a build:
 
